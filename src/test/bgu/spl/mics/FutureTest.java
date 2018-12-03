@@ -25,11 +25,6 @@ public class FutureTest {
 
     @Test
     public void get() {
-//        Thread t1= new Thread(()->{fut.get();});
-//        t1.start();
-//
-//        fut.resolve(5);
-
         Integer result = fut.get();
         fut.resolve(5);
         assertEquals((Integer) 5,result);

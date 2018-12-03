@@ -8,21 +8,31 @@ package bgu.spl.mics.application.passiveObjects;
  * You may add fields and methods to this class as you see fit (including public methods).
  */
 public class OrderReceipt {
+
+	private int orderId;
+	private String seller;
+	private int custId;
+	private String book;
+
+	public OrderReceipt(int orderId, String seller,int id,String book){
+		this.orderId=orderId;
+		this.seller=seller;
+		this.custId=id;
+		this.book=book;
+	}
 	
 	/**
      * Retrieves the orderId of this receipt.
      */
 	public int getOrderId() {
-		// TODO Implement this
-		return 0;
+		return orderId;
 	}
 	
 	/**
      * Retrieves the name of the selling service which handled the order.
      */
 	public String getSeller() {
-		// TODO Implement this
-		return null;
+		return seller;
 	}
 	
 	/**
@@ -31,16 +41,14 @@ public class OrderReceipt {
      * @return the ID of the customer
      */
 	public int getCustomerId() {
-		// TODO Implement this
-		return 0;
+		return custId;
 	}
 	
 	/**
      * Retrieves the name of the book which was bought.
      */
 	public String getBookTitle() {
-		// TODO Implement this
-		return null;
+		return book;
 	}
 	
 	/**

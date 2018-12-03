@@ -45,7 +45,9 @@ public class BookInventoryInfo {
 		return price;
 	}
 
-
+	public void decreaseAmount(){
+	    amount--;
+    }
 
 
 }

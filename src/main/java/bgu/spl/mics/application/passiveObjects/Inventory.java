@@ -1,6 +1,9 @@
 package bgu.spl.mics.application.passiveObjects;
 
 
+import com.sun.org.apache.xerces.internal.parsers.CachingParserPool;
+
+import java.util.Vector;
 
 /**
  * Passive data-object representing the store inventory.
@@ -15,12 +18,17 @@ package bgu.spl.mics.application.passiveObjects;
 
 public class Inventory {
 
+	private BookInventoryInfo[] books;
+	private static Inventory instance= null;
+
+	private Inventory (){
+
+	}
 	/**
 	 * Retrieves the single instance of this class.
 	 */
 	public static Inventory getInstance() {
-		//TODO: Implement this
-		return null;
+		return ;
 	}
 
 	/**
@@ -31,7 +39,8 @@ public class Inventory {
 	 * 						of the inventory.
 	 */
 	public void load (BookInventoryInfo[ ] inventory ) {
-
+		//books=new BookInventoryInfo[inventory.length];
+		books=inventory;
 	}
 
 	/**
@@ -42,9 +51,14 @@ public class Inventory {
 	 * 			The first should not change the state of the inventory while the
 	 * 			second should reduce by one the number of books of the desired type.
 	 */
-	public OrderResult take (String book) {
-
-		return null;
+	public synchronized OrderResult take (String book) {//thread safe method
+		for(BookInventoryInfo b: books){
+			if (b.getBookTitle()==book && b.getAmountInInventory()>0){
+				b.decreaseAmount();
+				return OrderResult.SUCCESSFULLY_TAKEN;
+			}
+		}
+		return OrderResult.NOT_IN_STOCK;
 	}
 
 
@@ -56,7 +70,11 @@ public class Inventory {
 	 * @return the price of the book if it is available, -1 otherwise.
 	 */
 	public int checkAvailabiltyAndGetPrice(String book) {
-		//TODO: Implement this
+		for(BookInventoryInfo b: books){
+			if(b.getBookTitle()==book&& b.getAmountInInventory()>0){
+				return b.getPrice();
+			}
+		}
 		return -1;
 	}
 

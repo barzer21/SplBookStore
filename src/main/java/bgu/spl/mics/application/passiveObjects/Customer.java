@@ -10,28 +10,39 @@ import java.util.List;
  */
 public class Customer {
 
+	private String name;
+	private int Id;
+	private String address;
+	private int money;
+	private int creditCard;
+
+	public Customer(String name,int id,String address,int money,int creditNum){
+		this.name=name;
+		this.Id=id;
+		this.address=address;
+		this.money=money;
+		this.creditCard=creditNum;
+
+	}
 	/**
      * Retrieves the name of the customer.
      */
 	public String getName() {
-		// TODO Implement this
-		return null;
+		return name;
 	}
 
 	/**
      * Retrieves the ID of the customer  . 
      */
 	public int getId() {
-		// TODO Implement this
-		return 0;
+		return Id;
 	}
 	
 	/**
      * Retrieves the address of the customer.  
      */
 	public String getAddress() {
-		// TODO Implement this
-		return null;
+		return address;
 	}
 	
 	/**
@@ -59,16 +70,14 @@ public class Customer {
      * @return Amount of money left.   
      */
 	public int getAvailableCreditAmount() {
-		// TODO Implement this
-		return 0;
+		return money;
 	}
 	
 	/**
      * Retrieves this customers credit card serial number.    
      */
 	public int getCreditNumber() {
-		// TODO Implement this
-		return 0;
+		return creditCard;
 	}
 	
 }
